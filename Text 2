@@ -1,0 +1,28 @@
+package converter;
+
+import java.util.Scanner;
+
+class CurrencyConverter {
+    public static double convert(String from, String to, double amount) {
+        double rate = switch (from.toLowerCase() + "-" + to.toLowerCase()) {
+            case "usd-ghs" -> 12.0;
+            case "euro-ghs" -> 13.0;
+            case "yen-ghs" -> 0.08;
+            case "ghs-usd" -> 1 / 12.0;
+            case "ghs-euro" -> 1 / 13.0;
+            case "ghs-yen" -> 1 / 0.08;
+            default -> 0;
+        };
+        return amount * rate;
+    }
+}
+
+class DistanceConverter {
+    public static double metersToKilometers(double meters) { return meters / 1000; }
+    public static double milesToKilometers(double miles) { return miles * 1.60934; }
+}
+
+class TimeConverter {
+    public static int hoursToMinutes(int hours) { return hours * 60; }
+    public static int minutesToSeconds(int minutes) { return minutes * 60; }
+}
