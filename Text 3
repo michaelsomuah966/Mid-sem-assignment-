@@ -1,0 +1,46 @@
+class Employee {
+    String empName, empID, address, mailID, mobileNo;
+    double basicPay;
+
+    public Employee(String empName, String empID, String address, String mailID, String mobileNo, double basicPay) {
+        this.empName = empName;
+        this.empID = empID;
+        this.address = address;
+        this.mailID = mailID;
+        this.mobileNo = mobileNo;
+        this.basicPay = basicPay;
+    }
+
+    public double calculateSalary() {
+        double DA = 0.97 * basicPay;
+        double HRA = 0.10 * basicPay;
+        double PF = 0.12 * basicPay;
+        double staffClub = 0.001 * basicPay;
+        double grossSalary = basicPay + DA + HRA;
+        double netSalary = grossSalary - (PF + staffClub);
+        return netSalary;
+    }
+
+    public void displayPaySlip() {
+        System.out.println("Employee: " + empName + ", Net Salary: " + calculateSalary());
+    }
+}
+
+class Programmer extends Employee {
+    public Programmer(String name, String id, String addr, String mail, String mobile, double bp) {
+        super(name, id, addr, mail, mobile, bp);
+    }
+}
+
+class Professor extends Employee {
+    public Professor(String name, String id, String addr, String mail, String mobile, double bp) {
+        super(name, id, addr, mail, mobile, bp);
+    }
+}
+
+public class EmployeePayroll {
+    public static void main(String[] args) {
+        Employee e1 = new Programmer("John Doe", "P101", "Accra", "john@mail.com", "1234567890", 5000);
+        e1.displayPaySlip();
+    }
+}
