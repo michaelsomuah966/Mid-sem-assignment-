@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class ElectricalCircuitAnalyzer {
+
+    
+    public static double calculateCurrent(double voltage, double resistance) {
+        if (resistance == 0) {
+            System.out.println("Resistance cannot be zero.");
+            return -1;
+        }
+        return voltage / resistance;
+    }
+
+    
+    public static double calculatePower(double voltage, double current) {
+        return voltage * current;
+    }
+
+    
+    public static double calculateResistance(double voltage, double current) {
+        if (current == 0) {
+            System.out.println("Current cannot be zero.");
+            return -1; 
+        }
+        return voltage / current;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.print("Enter voltage (V) in volts: ");
+        double voltage = scanner.nextDouble();
+
+        System.out.print("Enter resistance (R) in ohms: ");
+        double resistance = scanner.nextDouble();
+
+        
+        double current = calculateCurrent(voltage, resistance);
+        if (current != -1) {
+            System.out.println("Current (I) is: " + current + " A");
+        }
+
+        
+        double power = calculatePower(voltage, current);
+        if (current != -1) {
+            System.out.println("Power (P) is: " + power + " W");
+        }
+
+        
+        System.out.print("Enter current (I) in amperes to calculate resistance: ");
+        double currentForResistance = scanner.nextDouble();
+
+        double calculatedResistance = calculateResistance(voltage, currentForResistance);
+        if (calculatedResistance != -1) {
+            System.out.println("Resistance (R) is: " + calculatedResistance + " ohms");
+        }
+
+        scanner.close();
+    }
+}
