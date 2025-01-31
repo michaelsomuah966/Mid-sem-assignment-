@@ -1,0 +1,14 @@
+interface StackADT {
+    void push(int item);
+    int pop() throws Exception;
+    int peek() throws Exception;
+}
+
+class StackArray implements StackADT {
+    private int[] stack = new int[10];
+    private int top = -1;
+
+    public void push(int item) { stack[++top] = item; }
+    public int pop() throws Exception { if (top == -1) throw new Exception("Stack Empty"); return stack[top--]; }
+    public int peek() throws Exception { if (top == -1) throw new Exception("Stack Empty"); return stack[top]; }
+}
